@@ -1,0 +1,63 @@
+<div class="wrapper">
+	<div class="page-header">
+		<div class="perfil">
+				<div class="perfil_center"><% if @user.avatar.url.present? %>
+							  					
+							  					
+						 <%= image_tag @user.avatar_url() if @user.avatar_url%>
+							  		<%else%>
+							  <%= image_tag("default.jpg")%>
+							  					
+							  	 	<%end%></div>
+			<h1 class="text-align-center"><%=@user.name%> <small>@<%=@user.username%></small></h1>
+		</div>
+	</div>
+	<div class="posts">
+		<h2 class="text-align-center">Posts</h2>
+		<%unless @user.posts.blank?%>
+			<div class="wrapper_posts">
+		<%@user.posts.each do |post|%>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="user_avatar_mini pull-left">
+				<% if post.user.avatar.url.present?%>
+					<%= image_tag post.user.avatar_url() if post.user.avatar_url%>
+					<%else%>
+					<%= image_tag("default.jpg")%>
+					<%end%>
+			<span class="user_name"><%=post.user.name%></span>
+					<small class="time">	<%=time_ago_in_words(post.created_at)%></small>
+					</div>
+					
+			</div>
+			
+		</div>
+		<div class="description">
+		<div class="thumb">
+			<%=link_to post do %>
+			<%= image_tag post.image_url() if post.image_url%></div>
+		<h1><%=post.titl%></h1>
+		<%end%>
+			<p><%=truncate(post.body,length: 149)%></p>
+			<div class="container-fluid extra">
+				<div class="pull-left">
+					<%=link_to "Read More",post%>
+				</div>
+				<div class="pull-right gp">
+					<%unless post.get_upvotes.blank?%>
+						<%=link_to content_tag(:span ,'',class:"glyphicon glyphicon-heart" )%><small><%=post.get_upvotes.size%></small>
+					<%end%>
+					<%unless post.comments.blank?%>
+						<span class="glyphicon glyphicon-comment"><%=post.comments.count%></span>
+					<%end%>
+					
+				</div>
+			</div>
+	</div>
+
+	
+		</div>
+		<%end%>
+		<%end%>
+	</div>
+</div>

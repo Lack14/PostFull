@@ -1,0 +1,155 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-Sprockets";
+@import "bootstrap";
+
+.navbar-default{
+	background: #fff;
+}
+.navbar-brand{
+	font-size: 20px;
+}
+.wrapper{
+	max-width:600px;
+	width: 90%;
+	margin:auto;
+}
+.thumb img{
+	width:100%;
+	height: 200px;
+}
+.user_avatar_mini{
+	margin-bottom: 10px;
+}
+.user_avatar_mini img{
+	width: 50px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.wrapper_posts{
+	margin:10px;
+	border-bottom: 1px solid #DEDEDE;
+}
+.user_name{
+	font-size:20px;
+}
+a{
+	color:#009688;
+}
+a:hover{
+	text-decoration:none;
+	color:#009688;
+	background:none;
+}
+a:visited {
+	text-decoration:none;
+	color:#009688;
+}
+.description p{
+	text-align: justify;
+	width: 100%;
+	font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+.time{
+	clear:left;
+}
+.banner img{
+	width: 100%;
+	height: 500px;
+}
+.not_margin{
+	margin-top: -10px;
+}
+.text-align-center{
+text-align: center;
+margin: 10px;
+}
+.commets{
+	margin: 10px;
+}
+.comments h3{
+	border-bottom: 1px solid #DEDEDE;
+	margin-right:5px;
+}
+.show_comments{
+	margin-top: 10px;
+}
+.btn{
+	background: #009688;
+	color:#fff;
+	padding:10px;
+}
+.contenido{
+	margin: 20px;
+}
+.content p {
+	margin-right: 10px;
+}
+.commet-box , .contenido{
+	border-bottom: 1px solid #DEDEDE;
+}
+.perfil{
+	width:50%;
+	margin:10px auto;
+}
+.perfil img{
+	border-radius:50%;
+	width:150px;
+}
+.perfil_center{
+	margin:auto;
+	width:50%;
+}
+.extra{
+ margin:10px;
+}
+.perfil h1,h2{
+	color:#009688;
+}
+.B_G{
+	margin: 20px;
+	border-top: 2px solid #DEDEDE;
+	border-bottom: 2px solid #DEDEDE;
+	padding: 20px;
+}
+.B_G{
+	font-size: 30px;
+}
+.gp{
+	font-size:15px;
+}
+//notice
+#notice_wrapper {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  .alert { background: rgba(0, 150, 136, 0.5); }
+  .notice{ background: rgba(0, 150, 136, 0.5); }
+  .alert, .notice {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;    
+    padding: 35px 0;
+    text-align: center;  
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+}

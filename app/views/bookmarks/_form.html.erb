@@ -1,0 +1,10 @@
+<%= form_for (bookmark) do |f|%>
+	<div class="field">
+		<%= f.hidden_field :post_id, value: post.id%>
+	</div>
+	<div class="actions">
+	<%= content_tag :button, type: :submit,class:"btn bookmark" do%>
+		<span class="glyphicon glyphicon-bookmark">Agregar al bookmar</span>
+		<%end%>
+	</div>
+<%end%>

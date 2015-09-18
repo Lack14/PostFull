@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Radium</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-default">
+			  <div class="container">
+			  <!-- Brand and toggle get grouped for better mobile display -->
+			  <div class="navbar-header">
+			    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  aria-expanded="false">
+			      <span class="sr-only">Toggle navigation</span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			    </button>
+			    <a class="navbar-brand" href="#">Radium</a>
+			  </div>
+			  <ul class="nav navbar-nav">
+			  	<li><%=link_to "Staff Picks",root_path%></li>
+			  		<li><%=link_to "Bookmark",bookmark_path%></li>
+			  </ul>
+			    <ul class="nav navbar-nav navbar-right">
+			    <%if user_signed_in?%>	
+					<li><%= link_to "Nuevo post",new_post_path%></li>
+						  <li>
+						  	<div class="user_avatar_mini" id="dropdown_menu" type="button"  style= "cursor:pointer;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  	<% if current_user.avatar.url.present? %>
+						  					
+						  					
+					 <%= image_tag current_user.avatar_url() if current_user.avatar_url%>
+						  		<%else%>
+						  <%= image_tag("default.jpg")%>
+						  					
+						  	 	<%end%>
+						  	 </div>
+
+		 <ul class="dropdown-menu" aria-labelledby="dropdown_menu">
+		 	<li><%=link_to "Perfil",current_user%></li>
+				<li><%=link_to"Configuración",edit_user_registration_path(current_user)%></li>
+
+		   <li><%=link_to"Cerrar sesión",destroy_user_session_path, method: :delete%></li>
+
+							  </ul>
+						  	 </li>
+			</div>
+					<%else%>
+						<li><%= link_to "Ingresar",new_user_session_path%></li>
+						<li><%= link_to "Crear cuenta",new_user_registration_path%></li>
+					<%end%>
+			    </ul>
+		</nav>
+	</header>
+
+  <div id="notice_wrapper">
+  	<%if notice%>
+  	<p class="notice"><%= notice %></p>
+  	<%elsif%>
+  	<p class="alert"><%= alert %></p>
+  	<%end%>
+  </div>
+<%= yield %>
+
+</body>
+</html>

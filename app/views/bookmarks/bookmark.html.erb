@@ -1,0 +1,41 @@
+<div class="wrapper">
+	<h1 class="text-align-center">Bookmark</h1>
+	<div class="wrapper_posts">
+		<%@bookmarks.each do |bookmark|%>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="user_avatar_mini pull-left">
+				<% if bookmark.post.user.avatar.url.present?%>
+					<%= image_tag bookmark.post.user.avatar_url() if bookmark.post.user.avatar_url%>
+					<%else%>
+					<%= image_tag("default.jpg")%>
+					<%end%>
+			<span class="user_name"><%= link_to bookmark.post.user.name,bookmark.post.user%></span>
+					<small class="time">	<%=time_ago_in_words(bookmark.post.created_at)%></small>
+					</div>
+					
+			</div>
+			
+		</div>
+		<div class="description">
+		<div class="thumb">
+			<%=link_to bookmark.post do %>
+			<%= image_tag bookmark.post.image_url() if bookmark.post.image_url%></div>
+		<h1><%=bookmark.post.titl%></h1>
+		<%end%>
+			<p><%=truncate(bookmark.post.body,length: 149)%></p>
+			<div class="container-fluid extra">
+				<div class="pull-left">
+					<%=link_to "Read More",bookmark.post%>
+				</div>
+				<div class="pull-right">
+					<span class="glyphicon glyphicon-comment"><%=bookmark.post.comments.count%></span>
+				</div>
+			</div>
+	</div>
+
+	
+		</div>
+		<%end%>
+		<%= will_paginate @bookmarks, per_links: false %>
+</div>

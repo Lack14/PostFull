@@ -1,0 +1,18 @@
+<div class="wrapper">
+	<%= form_for (@post) do |f|%>
+	<div class="field form-group">
+			<%=f.text_field :titl, placeholder:"Titulo",class:"form-control"%>
+		</div>
+		<div class="field form-group">
+			<%=f.file_field :image%>
+		</div> 
+		<div class="field form-group">
+			<%=f.text_area :body, placeholder:"Descripcion",class:"form-control"
+				%>
+		</div>
+		
+	<div class="actions form-group">
+		<%=f.submit "Crear",class:"btn"%>
+	</div>
+	<%end%>
+</div>

@@ -1,0 +1,62 @@
+<div class="wrapper">
+	<div class="not_margin">
+		<div class="row">
+				<div class="col-md-12">
+					<div class="user_avatar_mini pull-left">
+					<% if @post.user.avatar.url.present?%>
+						<%= image_tag @post.user.avatar_url() if @post.user.avatar_url%>
+						<%else%>
+						<%= image_tag("default.jpg")%>
+						<%end%>
+				<span class="user_name"><%=link_to @post.user.name,@post.user%></span>
+						<small class="time">	<%=time_ago_in_words(@post.created_at)%></small>
+						</div>
+						
+				</div>
+				
+			</div>
+	</div>
+</div>
+<div class="banner">
+	<%= image_tag @post.image_url()  if @post.image_url%>
+</div>
+<div class="wrapper">
+	<h1 class="text-align-center"><%=@post.titl%></h1>
+	<div class="description">
+		<p>
+			<%= raw markdown(@post.body)%>
+		</p>
+	</div>
+	<div class="B_G container-fluid">
+		<div class="pull-left">
+			<%=link_to content_tag(:span ,'',class:"glyphicon glyphicon-heart" ),like_post_path(@post), method: :put%><small><%=@post.get_upvotes.size%></small>
+		</div>
+		<div class="pull-right">
+			<%= render "bookmarks/form", bookmark: Bookmark.new, post: @post%>
+		</div>
+	</div>
+	<div class="comments">
+		<%=render "comments/form"%>
+	 <h3>Comentarios <small><%=@post.comments.size%></small></h3>
+  <div class="comments-box">
+			<%@post.comments.each do |comment|%>
+			<div class="col-md-12 contenido">
+				<div class="user_avatar_mini pull-left col-md-12">
+				<% if comment.user.avatar.url.present?%>
+					<%= image_tag comment.user.avatar_url() if comment.user.avatar_url%>
+					<%else%>
+					<%= image_tag("default.jpg")%>
+					<%end%>
+			<span class="user_name"><%=comment.user.name%></span>
+
+			<div class="content">
+						<p><%=comment.body%></p>
+					</div>
+					</div>
+				</div>
+				</div>
+					
+					
+			<%end%>
+	</div>
+</div>
