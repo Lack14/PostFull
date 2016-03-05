@@ -7,7 +7,7 @@ class BookmarksController < ApplicationController
 				format.html{redirect_to bookmark_path, notice:"El post se ha agregado al BookMark"}
 				format.json{head :no_content}
 			else
-				redirect_to Post.find(post_params[:post_id]), error: "no pudimos procesar el pago"
+				redirect_to Post.find(post_params[:post_id]), error: "no pudimos agregar el post al bookmark"
 				format.json{head :no_content}
 			end
 		end
